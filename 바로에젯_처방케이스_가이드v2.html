@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>바로에젯 · 처방 케이스 가이드</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f0f4ff;
+  --white: #ffffff;
+  --surface: #e8edf8;
+  --border: rgba(26,86,219,0.10);
+  --text: #0f172a;
+  --text2: #475569;
+  --text3: #94a3b8;
+  --primary: #1a56db;
+  --primary-dark: #1341a8;
+  --primary-light: #dbe9ff;
+  --teal: #0891b2;
+  --teal-light: #e0f7fa;
+  --amber: #b45309;
+  --amber-light: #fef3c7;
+  --red: #be123c;
+  --red-light: #ffe4e6;
+  --green: #15803d;
+  --green-light: #dcfce7;
+  --purple: #6d28d9;
+  --purple-light: #ede9fe;
+  --coral: #c2410c;
+  --coral-light: #ffedd5;
+  --navy: #0f172a;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  padding: 44px 40px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-circle1 {
+  position: absolute; top: -70px; right: -50px;
+  width: 260px; height: 260px; border-radius: 50%;
+  background: rgba(26,86,219,0.25);
+}
+.hero-circle2 {
+  position: absolute; bottom: -90px; right: 140px;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: rgba(26,86,219,0.12);
+}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 0.14em;
+  color: #60a5fa; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.hero-title {
+  font-size: 30px; font-weight: 900;
+  color: #fff; letter-spacing: -0.025em;
+  line-height: 1.2; margin-bottom: 10px;
+}
+.hero-title em { color: #93c5fd; font-style: normal; }
+.hero-desc {
+  font-size: 13.5px; color: rgba(255,255,255,0.6);
+  font-weight: 300; max-width: 540px; line-height: 1.75;
+  margin-bottom: 22px;
+}
+.hero-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.hero-pill {
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.88);
+  font-size: 11.5px; font-weight: 500;
+  padding: 5px 14px; border-radius: 100px;
+}
+
+/* ── LAYOUT ── */
+.page { max-width: 1080px; margin: 0 auto; padding: 36px 28px 64px; }
+.sec-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px; margin-top: 40px;
+}
+.sec-head:first-child { margin-top: 0; }
+.sec-num {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  background: var(--primary); color: #fff;
+  padding: 3px 9px; border-radius: 5px; letter-spacing: 0.04em;
+}
+.sec-label {
+  font-size: 15px; font-weight: 700;
+  color: var(--text); letter-spacing: -0.01em;
+}
+
+/* ── CASE CARDS ── */
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px; margin-bottom: 4px;
+}
+.cases-grid-bottom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px; margin-top: 12px;
+}
+.case-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 18px 16px;
+  position: relative; overflow: hidden;
+  transition: transform .18s, box-shadow .18s;
+  cursor: default;
+}
+.case-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,40,0.10); }
+.case-card::after {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  border-radius: 14px 14px 0 0;
+}
+.c1::after { background: var(--primary); }
+.c2::after { background: var(--teal); }
+.c3::after { background: var(--purple); }
+.c4::after { background: var(--amber); }
+.c5::after { background: var(--teal); }
+.c6::after { background: var(--red); }
+.c7::after { background: var(--green); }
+
+.case-icon { font-size: 26px; margin-bottom: 10px; display: block; }
+.case-num {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  color: var(--text3); margin-bottom: 6px;
+}
+.case-title { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 7px; line-height: 1.35; }
+.case-body { font-size: 12px; color: var(--text2); line-height: 1.7; margin-bottom: 12px; }
+.case-chip {
+  display: inline-block; font-size: 10.5px; font-weight: 500;
+  padding: 3px 10px; border-radius: 100px;
+  font-family: 'DM Mono', monospace;
+}
+.chip-blue   { background: var(--primary-light); color: var(--primary); }
+.chip-teal   { background: var(--teal-light); color: var(--teal); }
+.chip-purple { background: var(--purple-light); color: var(--purple); }
+.chip-amber  { background: var(--amber-light); color: var(--amber); }
+.chip-red    { background: var(--red-light); color: var(--red); }
+.chip-green  { background: var(--green-light); color: var(--green); }
+.chip-coral  { background: var(--coral-light); color: var(--coral); }
+
+/* ── FAQ ── */
+.faq-list { display: flex; flex-direction: column; gap: 10px; }
+.faq-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+}
+.faq-q {
+  background: var(--surface);
+  padding: 13px 18px;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.faq-q-dot {
+  flex-shrink: 0; width: 22px; height: 22px;
+  background: var(--primary); color: #fff;
+  border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; font-size: 11px; font-weight: 700;
+  margin-top: 1px;
+}
+.faq-q-text { font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.5; }
+.faq-a {
+  padding: 13px 18px 14px 50px;
+  font-size: 12.5px; color: var(--text2); line-height: 1.75;
+}
+.faq-a b { color: var(--primary); font-weight: 700; }
+.faq-a .hl {
+  background: var(--primary-light); color: var(--primary);
+  padding: 1px 6px; border-radius: 4px;
+  font-size: 11.5px; font-weight: 500;
+}
+
+/* ── GUIDELINE ── */
+.gl-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.gl-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px;
+  display: flex; align-items: flex-start; gap: 16px;
+}
+.gl-badge {
+  flex-shrink: 0; padding: 8px 14px;
+  border-radius: 8px; font-size: 12px; font-weight: 700;
+  text-align: center; line-height: 1.4;
+  font-family: 'DM Mono', monospace;
+}
+.gl-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+.gl-desc { font-size: 12px; color: var(--text2); line-height: 1.65; }
+
+/* ── RP BOX ── */
+.rp-wrap {
+  background: var(--primary-dark);
+  border-radius: 16px; padding: 30px 36px;
+  position: relative; overflow: hidden;
+}
+.rp-wrap::before {
+  content: '"'; position: absolute;
+  top: -16px; left: 22px; font-size: 130px;
+  color: rgba(255,255,255,0.06);
+  font-family: Georgia, serif; line-height: 1;
+}
+.rp-label {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  letter-spacing: 0.12em; color: rgba(255,255,255,0.45);
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.rp-steps { display: flex; flex-direction: column; gap: 14px; }
+.rp-step { display: flex; gap: 14px; align-items: flex-start; }
+.rp-n {
+  flex-shrink: 0; width: 24px; height: 24px;
+  border-radius: 50%; background: rgba(255,255,255,0.14);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #fff;
+  margin-top: 2px;
+}
+.rp-t { font-size: 13px; color: rgba(255,255,255,0.88); line-height: 1.65; }
+.rp-t b { color: #93c5fd; }
+.rp-divider {
+  border: none; border-top: 1px solid rgba(255,255,255,0.08);
+  margin: 16px 0;
+}
+
+/* ── MARKET ── */
+.market-wrap {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 24px 28px;
+  display: flex; align-items: center; gap: 28px;
+}
+.mstat { flex-shrink: 0; text-align: center; }
+.mstat-n {
+  font-size: 32px; font-weight: 900;
+  color: var(--primary); letter-spacing: -0.03em; line-height: 1;
+}
+.mstat-l { font-size: 11px; color: var(--text3); margin-top: 4px; }
+.mdiv { width: 1px; height: 56px; background: var(--border); flex-shrink: 0; }
+.mdesc { font-size: 13px; color: var(--text2); line-height: 1.75; }
+.mdesc b { color: var(--text); font-weight: 700; }
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--border);
+  margin-top: 44px; padding-top: 20px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-l { font-size: 11.5px; color: var(--text3); }
+.footer-r { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.case-card { animation: fadeUp .4s ease both; }
+.case-card:nth-child(1){animation-delay:.04s}
+.case-card:nth-child(2){animation-delay:.09s}
+.case-card:nth-child(3){animation-delay:.14s}
+.case-card:nth-child(4){animation-delay:.19s}
+.case-card:nth-child(5){animation-delay:.24s}
+.case-card:nth-child(6){animation-delay:.29s}
+.case-card:nth-child(7){animation-delay:.34s}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 800px) {
+  .hero { padding: 32px 22px 28px; }
+  .hero-title { font-size: 24px; }
+  .page { padding: 24px 16px 48px; }
+  .cases-grid { grid-template-columns: repeat(2, 1fr); }
+  .cases-grid-bottom { grid-template-columns: repeat(2, 1fr); }
+  .faq-a { padding-left: 18px; }
+  .gl-row { grid-template-columns: 1fr; }
+  .market-wrap { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .mdiv { width: 100%; height: 1px; }
+  .rp-wrap { padding: 22px 20px; }
+  .footer { flex-direction: column; gap: 6px; align-items: flex-start; }
+}
+@media (max-width: 480px) {
+  .cases-grid { grid-template-columns: 1fr 1fr; }
+  .cases-grid-bottom { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-circle1"></div>
+  <div class="hero-circle2"></div>
+  <div class="hero-eyebrow">대웅제약 · 현장 처방 가이드</div>
+  <div class="hero-title">바로에젯 <em>처방 CASE</em><br>현장 대응 가이드</div>
+  <div class="hero-desc">
+    피타바스타틴 저용량 복합제 바로에젯의 우선 처방 환자군 7가지와<br>
+    원장님 반대 질문에 대한 근거 기반 현장 답변 모음
+  </div>
+  <div class="hero-pills">
+    <span class="hero-pill">피타바스타틴 1mg + 에제티미브 10mg</span>
+    <span class="hero-pill">ACC/AHA Class IIa</span>
+    <span class="hero-pill">ESC Class I</span>
+    <span class="hero-pill">초회 처방 삭감 사례 없음</span>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- 01 처방 케이스 -->
+  <div class="sec-head" style="margin-top:0">
+    <span class="sec-num">01</span>
+    <span class="sec-label">우선 처방 추천 환자 CASE — 7가지</span>
+  </div>
+
+  <div class="cases-grid">
+    <div class="case-card c1">
+      <span class="case-icon">👴</span>
+      <div class="case-num">CASE 01</div>
+      <div class="case-title">80세 이상<br>고령 환자</div>
+      <div class="case-body">고령일수록 스타틴 부작용(근육통·간독성) 위험 증가. 저용량으로 효과 유지하면서 에제티미브 기전 추가로 안전성 확보.</div>
+      <span class="case-chip chip-blue">부작용 최소화</span>
+    </div>
+    <div class="case-card c2">
+      <span class="case-icon">👩</span>
+      <div class="case-num">CASE 02</div>
+      <div class="case-title">여성 환자</div>
+      <div class="case-body">여성은 남성보다 근육 증상으로 스타틴 중단 가능성 높음. 순응도↓, 비스타틴 약물 처방률도 낮아 에제티미브 복합제가 최적 대안.</div>
+      <span class="case-chip chip-teal">순응도 개선</span>
+    </div>
+    <div class="case-card c3">
+      <span class="case-icon">⚖️</span>
+      <div class="case-num">CASE 03</div>
+      <div class="case-title">낮은 체질량지수<br>(Low BMI)</div>
+      <div class="case-body">체지방 낮을수록 스타틴 혈중 농도 상승 가능. 저용량 피타바로 혈중 농도 조절 + 에제티미브 기전 병용.</div>
+      <span class="case-chip chip-purple">용량 안전성</span>
+    </div>
+    <div class="case-card c4">
+      <span class="case-icon">🌏</span>
+      <div class="case-num">CASE 04</div>
+      <div class="case-title">아시아계 환자</div>
+      <div class="case-body">아시아인은 서양인 대비 낮은 용량에서 효과 발현. 증량보다 기전 추가(에제티미브)가 더 합리적. 1mg으로도 충분한 LDL 감소 기대.</div>
+      <span class="case-chip chip-amber">낮은 용량 고효과</span>
+    </div>
+  </div>
+
+  <div class="cases-grid-bottom">
+    <div class="case-card c5">
+      <span class="case-icon">🫘</span>
+      <div class="case-num">CASE 05</div>
+      <div class="case-title">신기능·간기능<br>저하 환자</div>
+      <div class="case-body">신·간기능 저하 시 스타틴 대사 이상으로 부작용 위험 증가. 저용량 유지 + 에제티미브(장내 콜레스테롤 흡수 억제) 기전 추가.</div>
+      <span class="case-chip chip-teal">장기 보호</span>
+    </div>
+    <div class="case-card c6">
+      <span class="case-icon">💪</span>
+      <div class="case-num">CASE 06</div>
+      <div class="case-title">CK 상승 · 근육통<br>이력 환자</div>
+      <div class="case-body">과거 CK 수치 상승 또는 원인불명 근육·관절통 이력 환자. 스타틴 용량 늘리지 않고 에제티미브 기전 추가로 목표 LDL 달성.</div>
+      <span class="case-chip chip-red">근육 부작용 예방</span>
+    </div>
+    <div class="case-card c7">
+      <span class="case-icon">💊</span>
+      <div class="case-num">CASE 07</div>
+      <div class="case-title">특정 약물<br>상호작용 우려</div>
+      <div class="case-body">다약제 복용 환자에서 스타틴 증량 시 약물 상호작용 리스크 증가. 용량 유지 + 에제티미브 추가로 상호작용 없이 LDL 목표 달성.</div>
+      <span class="case-chip chip-green">안전한 병용</span>
+    </div>
+  </div>
+
+  <!-- 02 FAQ -->
+  <div class="sec-head">
+    <span class="sec-num">02</span>
+    <span class="sec-label">빈도 높은 반대 질문 & 현장 답변 RP</span>
+  </div>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-dot">Q</div>
+        <div class="faq-q-text">저용량 에제티미브 복합제 써본 적 없는데요?</div>
+      </div>
+      <div class="faq-a">
+        아토르바·로수바 저용량 복합제가 이미 <b>10개 이상 제약사에서 출시</b>되어 <span class="hl">로컬시장 두 자릿수 M/S</span>를 3년 만에 달성했습니다. 에제티미브 장점 + 스타틴 용량 절반이라는 컨셉이 처방 표준으로 자리 잡고 있어, 이미 익숙한 흐름입니다.
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-dot">Q</div>
+        <div class="faq-q-text">어떤 환자에서 써요? 피타바 단일제 쓰는 환자 외에는?</div>
+      </div>
+      <div class="faq-a">
+        <b>80세 이상 고령·여성·Low BMI·아시아계·신간기능 저하·CK 상승 이력·다약제 복용 환자</b>가 핵심 타겟입니다. 스타틴 용량 부담 없이 LDL 목표를 달성해야 하는 환자에게 가장 먼저 고려할 수 있는 선택지입니다.
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-dot">Q</div>
+        <div class="faq-q-text">스타틴 쓰다가 바꿔도 되는 환자예요?</div>
+      </div>
+      <div class="faq-a">
+        기존 피타바스타틴 <b>2mg/10mg 복합제</b> 또는 <b>2·4mg 단일제</b> 조절군에서 <span class="hl">1mg/10mg 바로에젯</span>으로 전환 가능합니다. 용량 감량 + 기전 추가로 효과는 유지하면서 부작용 부담을 줄이는 전략입니다.
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-dot">Q</div>
+        <div class="faq-q-text">신환에서 처음부터 써도 돼요?</div>
+      </div>
+      <div class="faq-a">
+        <b>가능합니다.</b> 경쟁사는 이미 첫 메시지로 활용 중이며, 현재까지 에제티미브 스타틴 복합제 초회 처방 시 <span class="hl">삭감 사례 없음</span>. ACC/AHA Class IIa · ESC Class I 권고 등급이 근거입니다. 가이드라인 권고 등급도 상향 변경되었습니다.
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-dot">Q</div>
+        <div class="faq-q-text">부작용 때문에 바꾸는 케이스가 별로 없는데요?</div>
+      </div>
+      <div class="faq-a">
+        부작용이 명확하지 않아도 <b>예방적 관점</b>에서 선택 가능합니다. 고령·여성·아시아계처럼 <span class="hl">부작용 고위험군</span>에서 증량보다 기전 추가로 목표 달성하는 것이 더 합리적인 접근입니다.
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-dot">Q</div>
+        <div class="faq-q-text">로수바, 아토르바가 효과는 더 좋지 않나요?</div>
+      </div>
+      <div class="faq-a">
+        효과 면에서 강력하지만, <b>아시아인은 낮은 용량에서도 동일 효과</b>가 발현됩니다. 무조건 강한 스타틴보다 <span class="hl">용량 부담 없는 피타바 + 에제티미브</span>로 충분한 LDL 감소를 안전하게 달성할 수 있습니다.
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 근거 -->
+  <div class="sec-head">
+    <span class="sec-num">03</span>
+    <span class="sec-label">글로벌 가이드라인 근거</span>
+  </div>
+
+  <div class="gl-row">
+    <div class="gl-card">
+      <div class="gl-badge" style="background:var(--primary-light);color:var(--primary);">ACC/AHA<br>미국</div>
+      <div>
+        <div class="gl-title">에제티미브 Class IIa — 강한 권고</div>
+        <div class="gl-desc">스타틴 내약 최대 용량 후 에제티미브 추가를 강하게 권고. 초회 처방 시에도 임상적 근거 뒷받침. 권고 등급 상향 변경.</div>
+      </div>
+    </div>
+    <div class="gl-card">
+      <div class="gl-badge" style="background:var(--amber-light);color:var(--amber);">ESC<br>유럽</div>
+      <div>
+        <div class="gl-title">에제티미브 Class I — 최강 권고 등급</div>
+        <div class="gl-desc">유럽심장학회 최고 권고 등급. 스타틴과 병용 시 LDL 추가 감소 및 심혈관 사건 감소 근거 명확.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 RP -->
+  <div class="sec-head">
+    <span class="sec-num">04</span>
+    <span class="sec-label">현장 RP 스크립트 — 4단계 어프로치</span>
+  </div>
+
+  <div class="rp-wrap">
+    <div class="rp-label">Recommended Pitch · 현장 대응 순서</div>
+    <div class="rp-steps">
+      <div class="rp-step">
+        <div class="rp-n">1</div>
+        <div class="rp-t">
+          <b>"원장님, 아토르바·로수바 저용량 복합제가 이미 로컬시장에서 두 자릿수 M/S를 차지하고 있습니다."</b><br>
+          → 시장 흐름으로 친숙함 형성, 거부감 낮추기
+        </div>
+      </div>
+      <hr class="rp-divider">
+      <div class="rp-step">
+        <div class="rp-n">2</div>
+        <div class="rp-t">
+          <b>"원장님 환자 중 80세 이상 고령이나 여성, 근육통 이력 있는 분 계신가요?"</b><br>
+          → 구체적 환자 케이스로 공감 유도
+        </div>
+      </div>
+      <hr class="rp-divider">
+      <div class="rp-step">
+        <div class="rp-n">3</div>
+        <div class="rp-t">
+          <b>"그런 환자분께 스타틴 증량보다 기전 추가(에제티미브)가 더 합리적이라는 데 동의하시나요?"</b><br>
+          → 원리 동의 → 처방으로 자연스럽게 연결
+        </div>
+      </div>
+      <hr class="rp-divider">
+      <div class="rp-step">
+        <div class="rp-n">4</div>
+        <div class="rp-t">
+          <b>"바로에젯은 신환에서도 삭감 없이 처음부터 사용 가능하며, ESC Class I · ACC IIa 권고 등급입니다."</b><br>
+          → 근거 마무리로 신뢰 확보 · 처방 클로징
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 시장 -->
+  <div class="sec-head">
+    <span class="sec-num">05</span>
+    <span class="sec-label">시장 현황 & 배경</span>
+  </div>
+
+  <div class="market-wrap">
+    <div class="mstat">
+      <div class="mstat-n">10<span style="font-size:20px">+</span></div>
+      <div class="mstat-l">경쟁사 출시 수</div>
+    </div>
+    <div class="mdiv"></div>
+    <div class="mstat">
+      <div class="mstat-n">3년</div>
+      <div class="mstat-l">시장 형성 기간</div>
+    </div>
+    <div class="mdiv"></div>
+    <div class="mstat">
+      <div class="mstat-n" style="color:var(--teal);">두<br>자릿수</div>
+      <div class="mstat-l">로컬 M/S</div>
+    </div>
+    <div class="mdiv"></div>
+    <div class="mdesc">
+      아토르바·로수바 저용량 에제티미브 복합제가 이미 <b>10개 이상 제약사에서 출시</b>되어 3년 만에 로컬 시장에서 두 자릿수 M/S 달성. 에제티미브 + 스타틴 절반 용량 컨셉이 <b>처방 표준으로 자리 잡는 중</b>. 바로에젯은 피타바스타틴 기반으로 이 흐름에 올라타는 최적 타이밍.
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-l">대웅제약 · 서울3사업부 · 바로에젯 처방 케이스 가이드</div>
+    <div class="footer-r">REF. 이태우 남부3 · USAGE Study · ACC/AHA · ESC Guideline</div>
+  </div>
+
+</div>
+</body>
+</html>
